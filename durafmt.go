@@ -8,8 +8,16 @@ import (
 	"time"
 )
 
+const (
+	DF_LONG   = 0
+	DF_MIDDLE = 1
+	DF_SHORT  = 2
+)
+
 var (
-	units = []string{"years", "weeks", "days", "hours", "minutes", "seconds", "milliseconds"}
+	unitsLong   = []string{"years", "weeks", "days", "hours", "minutes", "seconds", "milliseconds"}
+	unitsMiddle = []string{"years", "weeks", "days", "hours", "minutes"}
+	unitsShort  = []string{"years", "weeks", "days", "hours"}
 )
 
 // Durafmt holds the parsed duration and the original input duration.
@@ -58,7 +66,7 @@ func ParseStringShort(input string) (*Durafmt, error) {
 }
 
 // String parses d *Durafmt into a human readable duration.
-func (d *Durafmt) String() string {
+func (d *Durafmt) String(format int) string {
 	var duration string
 
 	// Check for minus durations.
@@ -95,6 +103,20 @@ func (d *Durafmt) String() string {
 		"days":         days,
 		"weeks":        weeks,
 		"years":        years,
+	}
+
+	// format support for different operations with long and shor formats
+	var units []string
+
+	switch {
+	case format == DF_LONG:
+		units = unitsLong
+	case format == DF_MIDDLE:
+		units = unitsMiddle
+	case format == DF_SHORT:
+		units = unitsShort
+	default:
+		units = unitsLong
 	}
 
 	// Construct duration string.
