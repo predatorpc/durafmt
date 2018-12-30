@@ -96,13 +96,13 @@ func (d *Durafmt) String(format int) string {
 
 	// Create a map of the converted duration time.
 	durationMap := map[string]int64{
-		"milliseconds": milliseconds,
-		"seconds":      seconds,
-		"minutes":      minutes,
-		"hours":        hours,
-		"days":         days,
-		"weeks":        weeks,
-		"years":        years,
+		"msec": milliseconds,
+		"sec":      seconds,
+		"min":      minutes,
+		"hrs":        hours,
+		"d":         days,
+		"w":        weeks,
+		"y":        years,
 	}
 
 	// format support for different operations with long and shor formats
