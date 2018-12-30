@@ -15,9 +15,9 @@ const (
 )
 
 var (
-	unitsLong   = []string{"years", "weeks", "days", "hours", "minutes", "seconds", "milliseconds"}
-	unitsMiddle = []string{"years", "weeks", "days", "hours", "minutes"}
-	unitsShort  = []string{"years", "weeks", "days", "hours"}
+	unitsLong   = []string{"y", "ws", "d", "hrs", "min", "sec", "msec"}
+	unitsMiddle = []string{"y", "w", "d", "hrs", "min"}
+	unitsShort  = []string{"y", "w", "d", "hrs"}
 )
 
 // Durafmt holds the parsed duration and the original input duration.
